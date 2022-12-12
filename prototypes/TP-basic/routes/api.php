@@ -24,3 +24,14 @@ Route::resource('tasks', TaskController::class);
 // Route::post('/tasks', [TaskController::class, 'store']);
 // Route::put('/tasks/{id}', [TaskController::class, 'update']);
 // Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
+
+
+// postman requests 
+// GET tasks
+// http://127.0.0.1:8000/api/tasks
+// POST tasks
+// http://127.0.0.1:8000/api/tasks + key value pair in body
+// PUT tasks
+// http://127.0.0.1:8000/api/tasks/{$id} + key value pair in body
+// DELETE tasks
+// http://127.0.0.1:8000/api/tasks/{$id}
