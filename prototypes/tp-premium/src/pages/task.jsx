@@ -1,7 +1,7 @@
 import axios from "axios";
-import react from "react";
+import React from "react";
 
-class index extends react.Component {
+class Task extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ class index extends react.Component {
         };
 }
     componentDidMount() {
-        axios.get("http://localhost:3000/api/tasks").then((res) => {
+        axios.get("http://127.0.0.1:8000/api/tasks").then((res) => {
             this.setState({ data: res.data });
         });
     }
@@ -35,6 +35,14 @@ class index extends react.Component {
         });
     }
 
+    handleUpdate = (id) => {
+        axios.put(`http://localhost:3000/api/tasks/${id}`, {
+            task: this.state.task
+        }).then((res) => {
+            this.setState({ data: res.data });
+        });
+    }
+
     render() {
         return (
             <div>
@@ -45,8 +53,9 @@ class index extends react.Component {
                 <ul>
                     {this.state.data.map((item) => (
                         <li key={item.id}>
-                            {item.task}
+                            {item.name}
                             <button onClick={() => this.handleDelete(item.id)}>Delete</button>
+                            <button onClick={() => this.handleUpdate(item.id)}>Update</button>
                         </li>
                     ))}
                 </ul>
@@ -54,3 +63,5 @@ class index extends react.Component {
         );
     }
 }
+
+export default Task;
