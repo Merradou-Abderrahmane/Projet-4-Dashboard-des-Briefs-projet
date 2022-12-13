@@ -27,12 +27,14 @@ class Task extends React.Component {
         }).then((res) => {
             this.setState({ data: res.data });
         });
+        window.location.reload();
     }
 
     handleDelete = (id) => {
         axios.delete(`http://127.0.0.1:8000/api/tasks/${id}`).then((res) => {
             this.setState({ data: res.data });
         });
+        window.location.reload();
     }
 
     handleUpdate = (id) => {
