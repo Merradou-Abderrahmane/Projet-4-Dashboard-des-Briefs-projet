@@ -40,13 +40,26 @@ class Task extends React.Component {
         });   
      }
 
-    handleUpdate = (id) => {
-        axios.put(`http://127.0.0.1:8000/api/tasks/${id}`, {
-            task: this.state.task
-        }).then((res) => {
-            this.setState({ data: res.data });
-        });
+     handleEdit=(id)=>{
+        axios.get("http://127.0.0.1:8000/api/task/"+id)
+        .then(res=>{
+            this.setState({
+            Task:res.data.Task,
+            id:res.data.id
+        })
+        })
     }
+
+    handleUpdate=()=>{
+        let id = this.state.id
+        axios.put("http://127.0.0.1:8000/api/task/update/"+id,this.state)
+        .then(res=>{
+            alert("data has updated")
+            window.location.reload()
+        })
+    }
+
+
 
     render() {
         return (
