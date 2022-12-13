@@ -16,26 +16,29 @@ class Task extends React.Component {
         });
     }
 
-    handleChange = (e) => {
-        this.setState({ task: e.target.value });
-    }
-
-    handleSubmit = (e) => {
+    addTask =(e)=> {
         e.preventDefault();
-        axios.post("http://127.0.0.1:8000/api/tasks", {
-            task: this.state.task
-        }).then((res) => {
-            this.setState({ data: res.data });
-        });
-        window.location.reload();
-    }
-
+            console.log('ok')
+           const res = axios.post('http://127.0.0.1:8000/api/tasks',this.state).then(res=>{
+            window.location.reload();
+           })}
+       
+           
+    handleChange=(e)=>{
+            console.log(this)
+            this.setState({
+                name:e.target.value
+                
+            })
+    
+        }
+    
     handleDelete = (id) => {
         axios.delete(`http://127.0.0.1:8000/api/tasks/${id}`).then((res) => {
-            this.setState({ data: res.data });
-        });
-        window.location.reload();
-    }
+            window.location.reload()
+
+        });   
+     }
 
     handleUpdate = (id) => {
         axios.put(`http://127.0.0.1:8000/api/tasks/${id}`, {
@@ -48,7 +51,7 @@ class Task extends React.Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.addTask}>
                     <input type="text" onChange={this.handleChange} />
                     <button type="submit">Add</button>
                 </form>
