@@ -22,7 +22,7 @@ class Task extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:3000/api/tasks", {
+        axios.post("http://127.0.0.1:8000/api/tasks", {
             task: this.state.task
         }).then((res) => {
             this.setState({ data: res.data });
@@ -30,13 +30,13 @@ class Task extends React.Component {
     }
 
     handleDelete = (id) => {
-        axios.delete(`http://localhost:3000/api/tasks/${id}`).then((res) => {
+        axios.delete(`http://127.0.0.1:8000/api/tasks/${id}`).then((res) => {
             this.setState({ data: res.data });
         });
     }
 
     handleUpdate = (id) => {
-        axios.put(`http://localhost:3000/api/tasks/${id}`, {
+        axios.put(`http://127.0.0.1:8000/api/tasks/${id}`, {
             task: this.state.task
         }).then((res) => {
             this.setState({ data: res.data });
