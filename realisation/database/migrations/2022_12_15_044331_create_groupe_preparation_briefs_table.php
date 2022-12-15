@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('groupes_preparation_briefs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('groupe_id');
+            $table->foreign('groupe_id')->references('id')->on('groupes');
+            $table->unsignedBigInteger('preparation_brief_id');
+            $table->foreign('preparation_brief_id')->references('id')->on('preparation_briefs');
             $table->timestamps();
         });
     }

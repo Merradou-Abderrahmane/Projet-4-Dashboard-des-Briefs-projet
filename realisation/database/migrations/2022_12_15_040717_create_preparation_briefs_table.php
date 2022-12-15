@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('preparation_briefs', function (Blueprint $table) {
             $table->id();
+            $table->string('nom_brief');
+            $table->string('description');
+            $table->integer('duree');
+            $table->unsignedBigInteger('formateur_id');
+            $table->foreign('formateur_id')->references('id')->on('formateurs');
             $table->timestamps();
         });
     }

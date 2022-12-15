@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('groupes', function (Blueprint $table) {
             $table->id();
+            $table->string('nom_groupe');
+            $table->unsignedBigInteger('annee_formation_id');
+            $table->foreign('annee_formation_id')->references('id')->on('anne_formations');
+            $table->string('logo');
             $table->timestamps();
         });
     }
