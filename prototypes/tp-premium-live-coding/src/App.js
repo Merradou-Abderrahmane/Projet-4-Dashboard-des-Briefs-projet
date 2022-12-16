@@ -11,7 +11,7 @@ class Task extends React.Component {
   
   render() {
     let class_name = 'task'
-    class_name += this.props.done ? ' task-success' : ' task-info';
+    // class_name += this.props.done ? ' task-success' : ' task-info';
   
     return (
       <div className={class_name} onClick={this.props.onClickTask}>
@@ -37,7 +37,7 @@ class App extends React.Component {
       value: ''
     }
   }
-
+  // SyntheticEvent is a cross-browser wrapper around the browser's native event
   addTask(e) {
     
    
