@@ -5,13 +5,13 @@ import './Style.css';
 
  
 class Task extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  // }
+  constructor(props) {
+    super(props)
+  }
   
   render() {
     let class_name = 'task'
-    // class_name += this.props.done ? ' task-success' : ' task-info';
+    class_name += this.props.done ? ' task-success' : ' task-info';
   
     return (
       <div className={class_name} onClick={this.props.onClickTask}>
